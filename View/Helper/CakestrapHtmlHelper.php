@@ -225,8 +225,8 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	/**
 	 * tabs method
 	 * 
-	 * Create bootstrap styled tabs.  Set the 'type' key to 'pills in $ul_options to create
-	 * pills instead of tabs.
+	 * Create bootstrap styled tabs.  Set the 'type' key to 'pills' in 
+	 * $ul_options to create pills instead of tabs.
 	 * 
 	 * @param array $tabs
 	 * @param array $ul_options optional array()
