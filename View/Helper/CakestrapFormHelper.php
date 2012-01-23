@@ -47,9 +47,21 @@ class CakestrapFormHelper extends FormHelper {
 				//change the input type to a yes/no dropdown because checkboxes
 				//are ambiguously evil.
 				if (empty($options['type'])){
-					$chk_options = array('options' => array('0' => 'No', '1' => 'Yes'), 'class' => 'span2');
+					$chk_options = array(
+						'options' => array('0' => 'No', '1' => 'Yes'),
+						'class' => 'span2'
+					);
 				} else if ($options['type'] == 'checkbox') {
-					$chk_options = array('format' => array('before', 'label', 'between','input','error', 'after', ));
+					$chk_options = array(
+						'format' => array(
+							'before', 
+							'label', 
+							'between',
+							'input',
+							'error',
+							'after',
+						)
+					);
 				}
 			}
 		}
@@ -58,7 +70,15 @@ class CakestrapFormHelper extends FormHelper {
 			unset($options['help_text']);
 		}
 		$options = array_merge(
-			array('div' => array('class' => 'clearfix'), 'before' => null, 'between' => '<div class="input">', 'after' => '</div>', 'format' => null),
+			array(
+				'div' => array(
+					'class' => 'clearfix'
+				),
+				'before' => null, 
+				'between' => '<div class="input">',
+				'after' => '</div>', 
+				'format' => null
+			),
 			$chk_options,
 			$options
 		);

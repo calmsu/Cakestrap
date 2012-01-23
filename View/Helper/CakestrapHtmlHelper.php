@@ -37,8 +37,19 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	 * @param string $text
 	 * @param string $class
 	 */	
-	public function label($text, $class=null) {
-		return "<span class=\"label".(!empty($class)?(' '.$class):'')."\">{$text}</span>";
+	public function label($text, $class=null, $options = array()) {
+		$class = 'label' . 
+				 (!empty($class)?(' '.$class):'');
+		if (array_key_exists('class', $options)) {
+			$class .= ' ' .$options['class'];
+			unset($options['class']);
+		} 
+		
+		$options = array_merge(
+			array('class' => $class),
+			$options
+		);
+		return $this->tag('span' $text, $options);
 	}
 	
 	/**
@@ -78,11 +89,11 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	 * array to true to use a button instead of a link.
 	 * 
 	 * @param string $title
-	 * @param string $url
+	 * @param string $text
 	 * @param array $options optional array()
 	 */
-	public function copyLink($title, $url, $options = array()) {
-		$href = 'javascript:window.prompt("Copy to Clipboard. Crtl-C", "'.Router::url($url, true) . '");';
+	public function copyLink($title, $text, $options = array()) {
+		$href = 'javascript:window.prompt("Copy to Clipboard. Crtl-C", "'.$text . '");';
 		if (!empty($options['button'])) {
 			return $this->button($title, $href, $options);
 		} else {
@@ -214,8 +225,8 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	/**
 	 * tabs method
 	 * 
-	 * Create bootstrap styled tabs.  Set the 'type' key to 'pills in $ul_options to create
-	 * pills instead of tabs.
+	 * Create bootstrap styled tabs.  Set the 'type' key to 'pills' in 
+	 * $ul_options to create pills instead of tabs.
 	 * 
 	 * @param array $tabs
 	 * @param array $ul_options optional array()
