@@ -37,8 +37,19 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	 * @param string $text
 	 * @param string $class
 	 */	
-	public function label($text, $class=null) {
-		return "<span class=\"label".(!empty($class)?(' '.$class):'')."\">{$text}</span>";
+	public function label($text, $class=null, $options = array()) {
+		$class = 'label' . 
+				 (!empty($class)?(' '.$class):'');
+		if (array_key_exists('class', $options)) {
+			$class .= ' ' .$options['class'];
+			unset($options['class']);
+		} 
+		
+		$options = array_merge(
+			array('class' => $class),
+			$options
+		);
+		return $this->tag('span' $text, $options);
 	}
 	
 	/**
