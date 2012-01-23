@@ -2,7 +2,7 @@ Cakestrap - Twitter Bootstrap CakePHP 2.0 Plugin
 ================================================
 
 Cakestrap is designed to simplify integrating [Twitter Bootstrap](http://twitter.github.com/bootstrap/ ) 
-into CakePHP 2.0.  It includes BootstrapFormHelper and BootstrapHtmlHelper which
+into CakePHP 2.0.  It includes CakestrapFormHelper and CakestrapHtmlHelper which
 are designed to replace the built-in CakePHP Html and Form helpers.  Both of 
 these helpers extend the built-in helpers so that all functionality provided by
 the built-in helpers is still available.
