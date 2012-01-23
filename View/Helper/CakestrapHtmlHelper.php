@@ -49,7 +49,7 @@ class CakestrapHtmlHelper extends HtmlHelper {
 			array('class' => $class),
 			$options
 		);
-		return $this->tag('span' $text, $options);
+		return $this->tag('span', $text, $options);
 	}
 	
 	/**
