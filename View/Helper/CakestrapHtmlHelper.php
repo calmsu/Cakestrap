@@ -89,11 +89,11 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	 * array to true to use a button instead of a link.
 	 * 
 	 * @param string $title
-	 * @param string $url
+	 * @param string $text
 	 * @param array $options optional array()
 	 */
-	public function copyLink($title, $url, $options = array()) {
-		$href = 'javascript:window.prompt("Copy to Clipboard. Crtl-C", "'.Router::url($url, true) . '");';
+	public function copyLink($title, $text, $options = array()) {
+		$href = 'javascript:window.prompt("Copy to Clipboard. Crtl-C", "'.$text . '");';
 		if (!empty($options['button'])) {
 			return $this->button($title, $href, $options);
 		} else {
