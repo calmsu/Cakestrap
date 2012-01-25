@@ -48,14 +48,14 @@ class CakestrapComponent extends Component {
 				$controller->helpers['Form'] = true;
 			}
 			if (array_key_exists('Form', $controller->helpers)) {
-				$controller->helpers['Form'] = array('className' => 'Bootstrap.BootstrapForm');
+				$controller->helpers['Form'] = array('className' => 'Cakestrap.CakestrapForm');
 			}
 			if (($key = array_search('Html', $controller->helpers))!== false) {
 				unset($controller->helpers[$key]);
 				$controller->helpers['Html'] = true;
 			}
 			if (array_key_exists('Html', $controller->helpers)) {
-				$controller->helpers['Html'] = array('className' => 'Bootstrap.BootstrapHtml');
+				$controller->helpers['Html'] = array('className' => 'Cakestrap.CakestrapHtml');
 			}
 			
 		}
@@ -74,11 +74,11 @@ class CakestrapComponent extends Component {
 			if ($controller->Session->check('Message.flash')) {
 				$flash = $controller->Session->read('Message.flash');
 				if ($flash['element'] == 'default') {
-					$flash['params']['plugin'] = 'Bootstrap';
+					$flash['params']['plugin'] = 'Cakestrap';
 					$flash['element'] = 'bs_default';
 					$controller->Session->write('Message.flash', $flash);
 				} else if (strpos($flash['element'], 'bs_') === 0) {
-					$flash['params']['plugin'] = 'Bootstrap';
+					$flash['params']['plugin'] = 'Cakestrap';
 					$controller->Session->write('Message.flash', $flash);
 				}
 			}
