@@ -222,6 +222,37 @@ class CakestrapHtmlHelper extends HtmlHelper {
 		return $this->css('http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css', null, $options);
 	}
 	
+	public function less($path, $options = array()) {
+		$options += array('inline' => true);
+		if (is_array($path)) {
+			$out = '';
+			foreach($path as $i) {
+				if (substr($i, -5) !== '.less') {
+					$i .= ".less?";
+				} else {
+					$i .= "?";;
+				}
+				$out .= $this->css($i, 'stylesheet/less', $options);
+			}
+			if ($options['inline']) {
+				return $out;
+			}
+			return;
+		}	
+		
+		if (substr($path, -5) !== '.less') {
+			$path .= '.less?';
+		} else {
+			$path .= '?';
+		}
+		if ($options['inline']) {
+			return $this->css($path, 'stylesheet/less', $options);
+		} else {
+			$this->css($path, 'stylesheet/less', $options);
+			return;
+		}
+	}
+	
 	/**
 	 * tabs method
 	 * 
