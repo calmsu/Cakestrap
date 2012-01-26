@@ -71,6 +71,7 @@ Methods
 * tabs - outputs tabs or pills
 * bootstrapCss - includes hotlinked Twitter Bootstrap CSS
 * less - wrapper for css method, sets rel for less stylesheets
+
 ###CakestrapFormHelper
 * input - Reformats inputs
 * error - Reformats error messages 
