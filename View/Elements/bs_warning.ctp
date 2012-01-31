@@ -19,6 +19,6 @@
 ?>
 <div class="alert-message warning">
   <a class="close" href="#">×</a>
-  <p><strong><?php __('Uh oh!')?></strong> <?php echo $message ?></p>
+  <p><strong><?php echo __('Uh oh!')?></strong> <?php echo $message ?></p>
   
 </div>

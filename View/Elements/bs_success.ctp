@@ -18,6 +18,6 @@
 ?>
 <div class="alert-message success">
   <a class="close" href="#">×</a>
-  <p><strong><?php __('Excellent!')?></strong> <?php echo $message ?></p>
+  <p><strong><?php echo __('Excellent!')?></strong> <?php echo $message ?></p>
   
 </div>

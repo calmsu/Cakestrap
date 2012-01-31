@@ -20,5 +20,5 @@
 
 <div class="alert-message info">
   <a class="close" href="#">×</a>
-  <p><strong><?php __('Heads up!')?></strong> <?php echo $message ?></p>
+  <p><strong><?php echo __('Heads up!')?></strong> <?php echo $message ?></p>
 </div>
