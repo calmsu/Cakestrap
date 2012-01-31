@@ -93,7 +93,8 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	 * @param array $options optional array()
 	 */
 	public function copyLink($title, $text, $options = array()) {
-		$href = 'javascript:window.prompt("Copy to Clipboard. Crtl-C", "'.$text . '");';
+		$onclick = 'function() {javascript:window.prompt("Copy to Clipboard. Crtl-C", "'.$text . '"); return false; }';
+		$options = array_merge($options, array('onclick' => $onclick));
 		if (!empty($options['button'])) {
 			return $this->button($title, $href, $options);
 		} else {
