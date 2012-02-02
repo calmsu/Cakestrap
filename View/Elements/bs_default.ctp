@@ -18,7 +18,7 @@
 */
 ?>
 
-<div class="alert-message info">
-  <a class="close" href="#">×</a>
-  <p><strong><?php echo __('Heads up!')?></strong> <?php echo $message ?></p>
+<div class="alert alert-info">
+  <a class="close" href="#">&times;</a>
+  <strong><?php echo __('Heads up!')?></strong> <?php echo $message ?>
 </div>

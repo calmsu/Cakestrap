@@ -70,14 +70,16 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	 */
 	public function button($title, $url = null, $options = array(), $confirmMessage = null) {
 		$options['class'] = (!empty($options['class'])?$options['class'].' ':'') . 'btn';
-		if (array_key_exists('size', $options)) {
-			$options['class'] = $options['class'] .' ' . $options['size'];
-			unset($options['size']);
-		}
+		
 		if (array_key_exists('type', $options)) {
-			$options['class'] = $options['class'] .' '. $options['type'];
+			$options['class'] = $options['class'] .' btn-'. $options['type'];
 			unset($options['type']);
 		}
+		if (array_key_exists('size', $options)) {
+			$options['class'] = $options['class'] .' btn-' . $options['size'];
+			unset($options['size']);
+		}
+		
 		return $this->link($title, $url, $options, $confirmMessage);		
 		
 	}

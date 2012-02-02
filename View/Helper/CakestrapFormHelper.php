@@ -66,18 +66,25 @@ class CakestrapFormHelper extends FormHelper {
 			}
 		}
 		if (array_key_exists('help_text', $options)) {
-			$options['after'] = '<span class="help-block">'.$options['help_text'].'</span></div>';
+			$options['after'] = '<p class="help-block">'.$options['help_text'].'</p></div>';
 			unset($options['help_text']);
 		}
 		$options = array_merge(
 			array(
 				'div' => array(
-					'class' => 'clearfix'
+					'class' => 'control-group'
 				),
 				'before' => null, 
-				'between' => '<div class="input">',
+				'between' => '<div class="controls">',
 				'after' => '</div>', 
-				'format' => null
+				'format' => array(
+					'before',
+					'label',
+					'between',
+					'input',
+					'error',
+					'after',
+				)
 			),
 			$chk_options,
 			$options
@@ -122,11 +129,11 @@ class CakestrapFormHelper extends FormHelper {
 	public function postButton($title, $url = null, $options = array(), $confirmMessage = false) {
 		$options['class'] = (!empty($options['class']))?$options['class'].' ':'' . 'btn';
 		if (array_key_exists('size', $options)) {
-			$options['class'] = $options['class'] .' ' . $options['size'];
+			$options['class'] = $options['class'] .' btn-' . $options['size'];
 			unset($options['size']);
 		}
 		if (array_key_exists('type', $options)) {
-			$options['class'] = $options['class'] .' '. $options['type'];
+			$options['class'] = $options['class'] .' btn-'. $options['type'];
 			unset($options['type']);
 		}
 	

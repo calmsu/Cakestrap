@@ -16,8 +16,8 @@
 * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
 */
 ?>
-<div class="alert-message error">
-  <a class="close" href="#">×</a>
-  <p><strong><?php echo __('Doh!');?></strong> <?php echo $message ?></p>
+<div class="alert alert-error">
+  <a class="close" href="#">&times;</a>
+  <strong><?php echo __('Doh!');?></strong> <?php echo $message ?>
   
 </div>
