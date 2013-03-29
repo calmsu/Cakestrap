@@ -12,11 +12,7 @@ Usage
 
 Cakestrap doesn't include the Twitter Bootstrap libraries (css files, less 
 files, etc) so you'll need to include those on your own and link to them in your
-layouts.  Cakestrap does include a helper method in the CakestrapHtmlHelper for 
-hot-linking to the Twitter Bootstrap css files:
-
-    //In your layout file's head section
-    <?php echo $this->Html->bootstrapCss(); ?>
+layouts.
 
 Including the helpers
 ---------------------

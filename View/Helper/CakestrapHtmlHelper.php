@@ -212,16 +212,6 @@ class CakestrapHtmlHelper extends HtmlHelper {
 		return $out;
 	}
 	
-	/**
-	 * bootstrapCss method
-	 * 
-	 * Output the css for hotlinking to the bootstrap css.
-	 * 
-	 * @param array $options optional array()
-	 */
-	public function bootstrapCss($options = array()) {
-		return $this->css('http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css', null, $options);
-	}
 	
 	public function less($path, $options = array()) {
 		$options += array('inline' => true);
