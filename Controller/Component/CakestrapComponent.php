@@ -37,12 +37,10 @@ class CakestrapComponent extends Component {
 	*
 	* @param Controller $controller
 	*/
-	function initialize(&$controller) {
+	function initialize(Controller $controller) {
 		parent::initialize($controller);
-		
 		//If helpers is true, replace the Html and Form helpers with ours.
-		if ($this->helpers) {
-			
+		if ($this->helpers) {				
 			if (($key = array_search('Form', $controller->helpers))!== false) {
 				unset($controller->helpers[$key]);
 				$controller->helpers['Form'] = true;
@@ -57,7 +55,22 @@ class CakestrapComponent extends Component {
 			if (array_key_exists('Html', $controller->helpers)) {
 				$controller->helpers['Html'] = array('className' => 'Cakestrap.CakestrapHtml');
 			}
+			if (($key = array_search('Paginator', $controller->helpers))!== false) {
+				unset($controller->helpers[$key]);
+				$controller->helpers['Paginator'] = true;
+			}
+			if (array_key_exists('Paginator', $controller->helpers)) {
+				$controller->helpers['Paginator'] = array('className' => 'Cakestrap.CakestrapPaginator');
+			}
 			
+		}
+		
+		/** Setup our Defines **/
+		if (!defined('DATE_MAX_AGE')) {
+			define('DATE_MAX_AGE', 99);
+		}
+		if (!defined('DATE_MIN_AGE')) {
+			define('DATE_MIN_AGE', 1);
 		}
 	}
 	
@@ -69,7 +82,7 @@ class CakestrapComponent extends Component {
 	 * 
 	 * @param Controller $controller
 	 */
-	public function beforeRender(&$controller) {
+	public function beforeRender(Controller $controller) {
 		if ($this->flash && is_a($controller->Session, 'SessionComponent')) {
 			if ($controller->Session->check('Message.flash')) {
 				$flash = $controller->Session->read('Message.flash');

@@ -279,4 +279,31 @@ class CakestrapHtmlHelper extends HtmlHelper {
 		$out .= '</ul>';
 		return $out;
 	}
+
+	public function breadcrumbs($links, $options = array()) {
+		$out = '';
+		$options = array_merge(array(
+			'divider' => '/',
+			'class' => 'breadcrumb',
+		), $options);
+		if (!empty($options['class'])) {
+			$options['class'] = 'breadcrumb '.$options['class'];
+		}
+		$out .= $this->tag('ul', null, $options);
+		$i = 1;
+		foreach($links as $text => $link) {
+			if ($i == count($links)) {
+				$out .= $this->tag('li', $text, array('class' => 'active'));
+		
+				
+			} else {
+				$li = $this->link($text, $link). ' '. $this->tag('span', $options['divider'], array('class' => 'divider'));
+				$out .= $this->tag('li', $li, array('escape' => false));
+				
+			}
+			$i++;
+		}
+		$out .= '</ul>';
+		return $out;
+	}
 }

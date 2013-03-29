@@ -40,44 +40,88 @@ class CakestrapFormHelper extends FormHelper {
 		$modelKey = $this->model();
 		$fieldKey = $this->field();
 		$chk_options = array();
-		if ($fieldDef = $this->_introspectModel($modelKey, 'fields', $fieldKey)) {
+		$fieldDef = $this->_introspectModel($modelKey, 'fields', $fieldKey);
+		if ($fieldDef) {
 			$type = $fieldDef['type'];
-			if ($type == 'boolean') {
-				//If it's a checkbox and type=checkbox isn't explicitly set
-				//change the input type to a yes/no dropdown because checkboxes
-				//are ambiguously evil.
-				if (empty($options['type'])){
-					$chk_options = array(
-						'options' => array('0' => 'No', '1' => 'Yes'),
-						'class' => 'span2'
-					);
-				} else if ($options['type'] == 'checkbox') {
-					$chk_options = array(
-						'format' => array(
-							'before', 
-							'label', 
-							'between',
-							'input',
-							'error',
-							'after',
-						)
-					);
-				}
+		} else {
+			$type="text";
+		} 
+		
+		if (!empty($options['type'])) {
+			$type = $options['type'];
+		}
+		if ($type == 'boolean' || ($type== 'bool')) {
+			//If it's a checkbox and type=checkbox isn't explicitly set
+			//change the input type to a yes/no dropdown because checkboxes
+			//are ambiguously evil.
+		
+			if (empty($options['type']) || $options['type'] == 'bool'){
+				$chk_options = array(
+					'options' => array('0' => 'No', '1' => 'Yes'),
+					'class' => 'span1'
+				);
+				$options['type'] = 'select';
+			} else if ($options['type'] == 'checkbox') {
+				$chk_options = array(
+					'format' => array(
+						'before', 
+						'label', 
+						'between',
+						'input',
+						'error',
+						'after',
+					)
+				);
+			}
+		} else if ($type=='dob') {
+			$options['type'] = 'date';
+			$options['minYear'] = date('Y')-DATE_MAX_AGE;
+			$options['maxYear'] = date('Y')-DATE_MIN_AGE;
+			if (!empty($options['class'])) {
+				$options['class'].=' date';
+			} else {
+				$options['class'] = 'date';
 			}
 		}
 		if (array_key_exists('help_text', $options)) {
-			$options['after'] = '<span class="help-block">'.$options['help_text'].'</span></div>';
+			$options['after'] = '<span class="help-block">'.$options['help_text'].'</span>';
 			unset($options['help_text']);
+		}
+		if ((!empty($options['label'])) && is_string($options['label'])) {
+			$options['label'] = array('class' => 'control-label', 'text' => $options['label']);
+		}
+		if ((!empty($options['prepend'])) && (!empty($options['append']))) {
+			$options['between'] = '<div class="controls"><div class="input-prepend input-append"><span class="add-on">'.$options['prepend'].'</span>';
+			if (empty($options['after'])) $options['after'] = '';
+			$options['after'] = '<span class="add-on">'.$options['append'].'</span></div>'.$options['after'];
+			unset($options['prepend']);
+			unset($options['append']);
+		}
+		else if ((!empty($options['prepend']))) {
+			$options['between'] = '<div class="controls"><div class="input-prepend"><span class="add-on">'.$options['prepend'].'</span>';
+			if (empty($options['after'])) $options['after'] = '';
+			$options['after'] =  '</div>' . $options['after'];
+			unset($options['prepend']);
+		}
+		else if (!empty($options['append'])) {
+			$options['between'] = '<div class="controls"><div class="input-append">';
+			if (empty($options['after'])) $options['after'] = '';
+			$options['after'] = '<span class="add-on">'.$options['append'].'</span></div>' .$options['after'];
+			unset($options['append']);
+		}
+		if ((!empty($options['after']))) {
+			$options['after'] .= '</div>';
 		}
 		$options = array_merge(
 			array(
 				'div' => array(
-					'class' => 'clearfix'
+					'class' => 'control-group'
 				),
 				'before' => null, 
-				'between' => '<div class="input">',
+				'between' => '<div class="controls">',
 				'after' => '</div>', 
-				'format' => null
+				'format' => array('before', 'label', 'between', 'input', 'error', 'after'),
+				'label' => array('class' => 'control-label'),
 			),
 			$chk_options,
 			$options
