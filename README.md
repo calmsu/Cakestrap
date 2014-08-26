@@ -1,4 +1,4 @@
-Cakestrap - Twitter Bootstrap CakePHP 2.0 Plugin
+Cakestrap - Twitter Bootstrap CakePHP 3.0 Plugin
 ================================================
 
 Cakestrap is designed to simplify integrating [Twitter Bootstrap](http://twitter.github.com/bootstrap/ ) 
@@ -12,7 +12,7 @@ Usage
 
 Cakestrap doesn't include the Twitter Bootstrap libraries (css files, less 
 files, etc) so you'll need to include those on your own and link to them in your
-layouts.
+layouts. 
 
 Including the helpers
 ---------------------
