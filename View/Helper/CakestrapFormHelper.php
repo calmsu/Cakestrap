@@ -183,6 +183,28 @@ class CakestrapFormHelper extends FormHelper {
 	}
 
 /**
+ * postLink method
+ *
+ * Wrap the postLink method to add the icon option.
+ *
+ * @param string $title The content to be wrapped by <a> tags.
+ * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+ * @param array $options Array of HTML attributes.
+ * @param bool|string $confirmMessage JavaScript confirmation message.
+ * @return string An `<a />` element.
+ * (non-PHPdoc)
+ * @see FormHelper::postLink()
+ */
+	public function postLink($title, $url = null, $options = array(), $confirmMessage = false) {
+		if (array_key_exists('icon', $options)) {
+			$title = $this->Html->icon($options['icon'], $title, true);
+			unset ($options['icon']);
+			$options['escape'] = false;
+		}
+		return parent::postLink($title, $url, $options, $confirmMessage);
+	}
+
+/**
  * bool method
  *
  * Generate a boolean field in the dropdown style.

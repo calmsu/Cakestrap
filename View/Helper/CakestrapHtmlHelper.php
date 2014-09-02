@@ -108,16 +108,6 @@ class CakestrapHtmlHelper extends HtmlHelper {
 		} else {
 			$options['class'] = $options['class'] . ' btn-default';
 		}
-		if (array_key_exists('icon', $options)) {
-			$options['escape'] = false;
-			$iw = '';
-			if (!empty($options['icon-white'])) {
-				$iw = ' icon-white';
-				unset($options['icon-white']);
-			}
-			$title = '<i class="icon-' . $options['icon'] . $iw . '">&nbsp;</i> ' . $title;
-			unset($options['icon']);
-		}
 		return $this->link($title, $url, $options, $confirmMessage);
 	}
 
@@ -135,12 +125,7 @@ class CakestrapHtmlHelper extends HtmlHelper {
 	public function link($title, $url = null, $options = array(), $confirmMessage = false) {
 		if (array_key_exists('icon', $options)) {
 			$options['escape'] = false;
-			$iw = '';
-			if (!empty($options['icon-white'])) {
-				$iw = ' icon-white';
-				unset($options['icon-white']);
-			}
-			$title = '<i class="glyphicon glyphicon-' . $options['icon'] . $iw . '"></i> ' . $title;
+			$title = $this->icon($options['icon'], $title, true);
 			unset($options['icon']);
 		}
 		if (array_key_exists('wrap', $options)) {
@@ -441,5 +426,29 @@ class CakestrapHtmlHelper extends HtmlHelper {
 		}
 		$out .= '</ul>';
 		return $out;
+	}
+
+/**
+ * icon method
+ *
+ * Generate an icon element with the supplied classes.  Uses the title
+ * parameter if supplied replacing {i} with the icon.
+ *
+ * @param string $icon  Icon class(es) to use
+ * @param string $title Title
+ * @param string $force Output an icon even if {i} isn't found in title
+ * @return mixed|string HTML
+ */
+	public function icon($icon, $title = '', $force = false) {
+		$iconStr = '<i class="' . $icon . '"></i>';
+		if (stristr($title, '{i}') !== false) {
+			return str_replace('{i}', $iconStr, $title);
+		} elseif (empty($title)) {
+			return $iconStr;
+		} elseif ($force) {
+			return $iconStr . ' ' . $title;
+		} else {
+			return $title;
+		}
 	}
 }
