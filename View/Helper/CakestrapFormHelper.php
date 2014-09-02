@@ -207,7 +207,7 @@ class CakestrapFormHelper extends FormHelper {
  * @see FormHelper::postLink()
  */
 	public function postLink($title, $url = null, $options = array(), $confirmMessage = false) {
-		if (array_key_exists('icon', $options)) {
+		if (is_array($options) && array_key_exists('icon', $options)) {
 			$title = $this->Html->icon($options['icon'], $title, true);
 			unset ($options['icon']);
 			$options['escape'] = false;
