@@ -22,6 +22,17 @@ App::uses('FormHelper', 'View/Helper');
 class CakestrapFormHelper extends FormHelper {
 
 /**
+ * useMessenger
+ *
+ * If set to true, we'll replace confirmation messages with a syntax
+ * that can be used with Messenger.
+ *
+ * @link https://github.com/calmsu/Cakestrap/wiki/Messenger%20Support
+ * @var boolean
+ */
+	public $useMessenger = false;
+
+/**
  * input method
  *
  * Drop in replacement for the built-in FormHelper input function.   For the
@@ -202,6 +213,28 @@ class CakestrapFormHelper extends FormHelper {
 			$options['escape'] = false;
 		}
 		return parent::postLink($title, $url, $options, $confirmMessage);
+	}
+
+/**
+ * _confirm method
+ *
+ * Wrap the confirm dialog option for use with Messenger if so enabled.
+ * Otherwise use the stock CakePHP method.
+ *
+ * @param string $message Message to be displayed
+ * @param string $okCode Code to be executed after user chose 'OK'
+ * @param string $cancelCode Code to be executed after user chose 'Cancel'
+ * @param array $options Array of options
+ * @return string onclick JS code
+ */
+	protected function _confirm($message, $okCode, $cancelCode = '', $options = array()) {
+		if (!$this->useMessenger = true) {
+			return parent::_confirm($message, $okCode, $cancelCode, $options);
+		} else {
+			$cancelCode = '$.noop();';
+			$confirm = "confirm('{$message}', function() {{$okCode}}, function() {{$cancelCode}}); ";
+			return $confirm;
+		}
 	}
 
 /**

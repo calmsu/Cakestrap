@@ -35,7 +35,7 @@ class CakestrapPaginatorHelper extends PaginatorHelper {
  * (non-PHPdoc)
  * @see PaginatorHelper::prev()
  */
-	public function prev($title = '<< Previous', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
+	public function prev($title = '<i class="fa fa-chevron-left"></i> Previous', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
 		$options = array_merge(
 			array(
 				'tag' => 'li',
@@ -67,7 +67,7 @@ class CakestrapPaginatorHelper extends PaginatorHelper {
  * (non-PHPdoc)
  * @see PaginatorHelper::next()
  */
-	public function next($title = '<< Previous', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
+	public function next($title = 'Next <i class="fa fa-chevron-right"></i>', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
 		$options = array_merge(
 				array(
 						'tag' => 'li',
