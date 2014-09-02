@@ -228,7 +228,7 @@ class CakestrapFormHelper extends FormHelper {
  * @return string onclick JS code
  */
 	protected function _confirm($message, $okCode, $cancelCode = '', $options = array()) {
-		if (!$this->useMessenger = true) {
+		if (!$this->useMessenger) {
 			return parent::_confirm($message, $okCode, $cancelCode, $options);
 		} else {
 			$cancelCode = '$.noop();';
@@ -258,5 +258,20 @@ class CakestrapFormHelper extends FormHelper {
 			),
 			$options);
 		return $this->select($field, $options['options'], $options);
+	}
+
+/**
+ * __construct method
+ *
+ * Copy settings into object.
+ *
+ * @param View $View The View this helper is being attached to.
+ * @param array $settings Configuration settings for the helper.
+ */
+	public function __construct(View $View, $settings = array()) {
+		parent::__construct($View, $settings);
+		foreach ($settings as $key => $setting) {
+			$this->{$key} = $setting;
+		}
 	}
 }
