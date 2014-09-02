@@ -40,10 +40,12 @@ class CakestrapComponent extends Component {
 	public function initialize(Controller $controller) {
 		parent::initialize($controller);
 		//If helpers is true, replace the Html and Form helpers with ours.
-		foreach (array_keys($this->helpers) as $key) {
-			if (is_int($key)) {
-				$this->helpers[$this->helpers[$key]] = true;
-				unset($this->helpers[$key]);
+		if (is_array($this->helpers)) {
+			foreach (array_keys($this->helpers) as $key) {
+				if (is_int($key)) {
+					$this->helpers[$this->helpers[$key]] = true;
+					unset($this->helpers[$key]);
+				}
 			}
 		}
 		if ($this->helpers) {
