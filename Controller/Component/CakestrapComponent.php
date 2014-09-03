@@ -68,7 +68,7 @@ class CakestrapComponent extends Component {
 					$controller->helpers['Html'] = true;
 				}
 				if (array_key_exists('Html', $controller->helpers)) {
-					if ((!empty($this->helpers['Html'])) && is_array($this->helpers'Html'])) {
+					if ((!empty($this->helpers['Html'])) && is_array($this->helpers['Html'])) {
 						$controller->helpers['Html'] = array_merge(['className' => 'Cakestrap.CakestrapHtml'], $this->helpers['Html']);
 					} else {
 						$controller->helpers['Html'] = array('className' => 'Cakestrap.CakestrapHtml');
