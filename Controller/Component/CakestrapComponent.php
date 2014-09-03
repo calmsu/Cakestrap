@@ -55,7 +55,7 @@ class CakestrapComponent extends Component {
 					$controller->helpers['Form'] = true;
 				}
 				if (array_key_exists('Form', $controller->helpers)) {
-					if ((!empty($this->helpers['Form'])) && is_array($this->helper['Form'])) {
+					if ((!empty($this->helpers['Form'])) && is_array($this->helpers['Form'])) {
 						$controller->helpers['Form'] = array_merge(['className' => 'Cakestrap.CakestrapForm'], $this->helpers['Form']);
 					} else {
 						$controller->helpers['Form'] = array('className' => 'Cakestrap.CakestrapForm');
@@ -68,7 +68,7 @@ class CakestrapComponent extends Component {
 					$controller->helpers['Html'] = true;
 				}
 				if (array_key_exists('Html', $controller->helpers)) {
-					if ((!empty($this->helpers['Html'])) && is_array($this->helper['Html'])) {
+					if ((!empty($this->helpers['Html'])) && is_array($this->helpers'Html'])) {
 						$controller->helpers['Html'] = array_merge(['className' => 'Cakestrap.CakestrapHtml'], $this->helpers['Html']);
 					} else {
 						$controller->helpers['Html'] = array('className' => 'Cakestrap.CakestrapHtml');
@@ -82,7 +82,7 @@ class CakestrapComponent extends Component {
 					$controller->helpers['Paginator'] = true;
 				}
 				if (array_key_exists('Paginator', $controller->helpers)) {
-					if ((!empty($this->helpers['Paginator'])) && is_array($this->helper['Paginator'])) {
+					if ((!empty($this->helpers['Paginator'])) && is_array($this->helpers['Paginator'])) {
 						$controller->helpers['Paginator'] = array_merge(['className' => 'Cakestrap.CakestrapPaginator'], $this->helpers['Paginator']);
 					} else {
 						$controller->helpers['Paginator'] = array('className' => 'Cakestrap.CakestrapPaginator');
