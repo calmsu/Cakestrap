@@ -7,12 +7,12 @@
 if (Messenger) {
 window.confirm = function (message, userSuccessCallback, userCancelCallback) {
 	successCallback = function(msg) {
-		userSuccessCallback();
 		confirmMsg.hide();
+		userSuccessCallback();
 	};
 	cancelCallback = function(msg) {
-		userCancelCallback();
 		confirmMsg.hide();
+		userCancelCallback();
 	}
 	confirmMsg = Messenger().post({
 		message: message,
