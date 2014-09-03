@@ -29,6 +29,6 @@ window.confirm = function (message, userSuccessCallback, userCancelCallback) {
 			   }
 			}        
 		});
-	}
 	return false;
+	}
 }
